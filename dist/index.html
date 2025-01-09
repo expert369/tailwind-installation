@@ -3,10 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./output.css">
-    <title>Document</title>
+    <title>To-Do List</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <h1 class="bg-green-400">Hello World</h1>
+<body class="bg-black text-gray-800 flex justify-center items-center min-h-screen m-0">
+
+    <div class="bg-white p-8 rounded-lg shadow-lg w-1/2 max-w-lg mt-20" style="box-shadow: 0 4px 6px 5px rgba(250, 248, 248, 0.685), 0 2px 4px -1px rgba(231, 228, 228, 0.863);">
+        <h2 class="text-center text-2xl font-bold mb-6">TO-DO LIST</h2>
+
+        <div class="mb-6 flex">
+            <input type="text" placeholder="Add a task" id="js-input" class="flex-grow border border-gray-300 rounded-md px-4 py-2 mr-4 focus:outline-none focus:ring focus:ring-blue-300">
+            <button class="js-button bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" onclick="addToDo();">Add</button>
+        </div>
+
+        <div class="js-todo-list mb-4 ">
+            
+        </div>
+
+    </div>
+    <script src="../func/script.js"></script>
 </body>
 </html>
