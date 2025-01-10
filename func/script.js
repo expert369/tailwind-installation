@@ -7,6 +7,10 @@ input.addEventListener('keydown', function (event) {
     }
 });
 
+addButton.addEventListener('click', function () {
+    addToDo();
+});
+
 renderToDoList();
 
 function renderToDoList(){
