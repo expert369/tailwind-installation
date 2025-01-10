@@ -1,16 +1,7 @@
 let mytodo = JSON.parse(localStorage.getItem('mytodo')) || ["Develop", "Eat", "Sleep", "Repeat"];
-const addButton = document.querySelector('.js-button');
 
-const input = document.querySelector('#js-input');
-input.addEventListener('keydown', function (event) {
-    if (event.key === 'Enter') {
-        addToDo();
-    }
-});
 
-addButton.addEventListener('click', function () {
-    addToDo();
-});
+
 
 renderToDoList();
 
