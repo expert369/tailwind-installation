@@ -1,16 +1,18 @@
-let mytodo = ["Develop", "Eat", "Sleep", "Repeat"];
+let mytodo = JSON.parse(localStorage.getItem('mytodo')) || ["Develop", "Eat", "Sleep", "Repeat"];
 
 renderToDoList();
 
 function renderToDoList(){
     const todolist = document.querySelector('.js-todo-list');
-    console.log(todolist)
-    console.log(mytodo)
-    mytodo.forEach(todo => {
-        const html = `<div><input type="checkbox" class="mr-2 h-5 w-5"><span>${todo}</span></div>`
+    todolist.innerHTML = '';
+    mytodo.forEach((todo, index) => {
+        const html = `<div class="flex justify-between">
+        <span style="font-weight: 500; text-decoration: underline;">${todo}</span><button class="p-2 mb-1 hover:bg-green-700 bg-green-500" 
+        style="color:white; font-weight: 500; border-radius: 5px;" 
+        data-index="${index}" onclick="deleteToDo(${index})">Delete</button></div>`
         todolist.innerHTML += html;
     })
-    
+    saveToLocalStorage();
     
 }
 
@@ -20,9 +22,16 @@ function addToDo() {
 
     if (todo) {
         mytodo.push(todo); // Add new task to the list
-        const todolist = document.querySelector('.js-todo-list');
-        const newTodoHTML = `<div><input type="checkbox" class="mr-2 h-5 w-5"><span>${todo}</span></div>`;
-        todolist.innerHTML += newTodoHTML; // Append new to-do to the list
-        input.value = ''; // Clear input field
+        renderToDoList();  // Re-render the list
+        input.value = '';
     }
+}
+
+function deleteToDo(index){
+    mytodo.splice(index, 1);
+    renderToDoList();
+}
+
+function saveToLocalStorage() {
+    localStorage.setItem('mytodo', JSON.stringify(mytodo)); // Save the list to localStorage
 }
